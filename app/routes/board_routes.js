@@ -57,8 +57,6 @@ router.get('/boards/:id', requireToken, (req, res, next) => {
 
 // CREATE
 // POST /boards
-// All boards should theoretically begin completely empty. That said, if I make special "game modes",
-// I may choose otherwise. The starting array will be defined on the FRONT END.
 router.post('/boards', requireToken, (req, res, next) => {
   // set owner of new board to be current user
   req.body.board.owner = req.user.id

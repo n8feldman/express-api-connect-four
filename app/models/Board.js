@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const boardSchema = new mongoose.Schema(
   {
     moves: {
-      type: [[String]],
+      type: [[Number]],
       required: true
     },
     owner: {
