@@ -43,6 +43,12 @@ app.use(cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDe
 // define port for API to run on
 const port = process.env.PORT || serverDevPort
 
+// const io = require('socket.io')(server, { cors: { origin: '*' } })
+
+// io.on('connection', (socket) => {
+// // server routes go in here
+// }
+
 // register passport authentication middleware
 app.use(auth)
 
