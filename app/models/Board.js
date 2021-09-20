@@ -10,7 +10,12 @@ const boardSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true
+    },
+    winner: {
+      type: String,
+      default: null
     }
+    // opponent - user
   },
   {
     timestamps: true
