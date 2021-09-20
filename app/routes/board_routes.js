@@ -15,6 +15,7 @@ const handle404 = customErrors.handle404
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
 const requireOwnership = customErrors.requireOwnership
+const checkGameOver = customErrors.checkGameOver
 
 // this is middleware that will remove blank fields from `req.body`, e.g.
 // { board: { title: '', text: 'foo' } } -> { board: { text: 'foo' } }
@@ -85,6 +86,8 @@ router.patch('/boards/:id', requireToken, removeBlanks, (req, res, next) => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
       requireOwnership(req, board)
+      // Check if the game is over. If the game is over, we will throw an error.
+      checkGameOver(board)
 
       // pass the result of Mongoose's `.update` to the next `.then`
       return board.updateOne(req.body.board)
